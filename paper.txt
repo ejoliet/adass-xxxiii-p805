@@ -1,0 +1,57 @@
+The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the Roman Science Support Center (SSC) at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
+
+
+Roman SSC
+
+
+Science data processing pipelines running in NASA cloud are
+
+WFI Microlensing Science Operations System (MSOS)
+WFI Grism and Prism Data Processing System (GDPS)
+
+Will produce high level science data products and support Galactic Bulge Time Domain Survey and High Latitude Wide Area, High Latitude Time Domain and Guest Observer surveys
+MSOS: Microlensing survey processing pipeline producing daily light curves, seasonal objects and events catalogs among other products.~200 millions object catalogs, Microlensing events catalog, Light Curves
+GDPS: Produces decontaminated 2D and 1D extracted spectra and spectral redshifts among other products. 
+Other SSC main systems: Coronagraph Instrument Operations and Data Management System, Roman Telescope Proposal System, and Community Engagement.
+Data volumes
+
+MSOS: 5 TB/daily  ~ 2PB over mission lifetime (6 seasons of ~62 days each) 
+GDPS: 1.5TB/daily during survey (unsure since TBD observations)
+CGI - 1TB over tech demo
+
+NASA cloud
+
+The NASA Mission Cloud Platform (NMCP) uses AWS services to run mission work including running the science pipelines:
+
+AMIs, VPCs, ACL and few other cloud related environment is managed by NMCP. 
+SSC sets the roles, services and manages deployments.
+Containers are stored and managed from AWS ECR service.
+Tasks resources are provisioned and orchestrated by Kubernetes cluster using the Elastic Kubernetes Service (AWS EKS).
+Science products are stored and indexed in S3 buckets.
+Database(s) Aurora RDS PostgreSQL is used for Airflow metadata and pipeline processing.
+
+Apache Airflow on AWS
+
+Roman SSC science data processing pipeline tasks are scheduled and run in a Kubernetes cluster (AWS EKS) using the Apache Airflow scheduler and UI dashboard. Task workflows are defined as Direct Acyclic Graphs (DAGs) using the Airflow task API.
+
+Multiple DAGs define pipeline workflow and lifecycle.
+CloudFormation stacks and Helm tools are used to deploy/managed software and services such as Roman SSC containers, Airflow, Grafana and Prometheus.
+Docker images registry (AWS ECR) helps storing, distributing and versioned the science software under GitHub.
+Airflow KubernetesPodOperator operator is used to define the task and its resources.
+Node group consists of EC2s ‘aml2’, with ability to scale vertically and horizontally.
+
+Software Engineering
+
+Roman SSC uses a GitOps approach for defining and deploying the infrastructure and resources. We apply DevOps best practices to a CI/CD chain, with version control and infrastructure-as-code automation. Our Python ecosystem includes asdf, astropy, scipy, pydantic, dask, boto3, matplotlib, pytest/tox, and Airflow API, among others. 
+C/C++ codebase makes use of numerical and test unit libraries.
+
+Code, DAGs and AWS scripts to support running the pipelines are under Configuration Management in IPAC private GitHub repositories.
+Docker images are used as a release artifacts to be distributed in EKS cluster and run as PODs.
+Security scanned on GitHub and ECR with Snyk.
+A Jenkins server on an EC2 instance is running builds, tests on code changes and releases.
+The Apache Airflow frontend UI allows operators to monitor and troubleshoot the data pipelines, providing insights into Directed Acyclic Graphs (DAGs) and DAG runs.
+
+
+
+
+
