@@ -3,4 +3,4 @@ P = P805
 V = 1
 A = Joliet
 E = ejoliet@caltech.edu
-#FIGS = P12_*.eps
+FIGS = *.eps
