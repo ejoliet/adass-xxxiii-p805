@@ -1,15 +1,3 @@
-% This is the ADASS_template.tex LaTeX file, 19th Sep 2019.
-% It is based on the ASP general author template file, but modified to reflect the specific
-% requirements of the ADASS proceedings.
-% Copyright 2014, Astronomical Society of the Pacific Conference Series
-% Revision:  14 August 2014
-
-% To compile, at the command line positioned at this folder, type:
-% latex ADASS_template
-% latex ADASS_template
-% dvipdfm ADASS_template
-% This will create a file called ADASS_template.pdf
-
 \documentclass[11pt,twoside]{article}
 
 % Do NOT use ANY packages other than asp2014. 
@@ -33,11 +21,11 @@
 % Use mixed case type for the shortened title
 % Ensure shortened title does not cause an overfull hbox LaTeX error
 % See ASPmanual2010.pdf 2.1.4  and ManuscriptInstructions.pdf for more details
-\markboth{Author1, Author2, and Author3}{Short Title}
+\markboth{Joliet}{Running Roman pipelines in NASA cloud}
 
 \begin{document}
 
-\title{ADASS Author Template and Long Title}
+\title{Running Roman pipelines in NASA cloud with Airflow and Kubernetes}
 
 % Note the position of the comma between the author name and the 
 % affiliation number.
@@ -48,14 +36,11 @@
 % authors share an affiliation this should be in a single \affil which can then
 % be referenced for several author names. If only one affiliation, no footnotes are needed.
 % See ManuscriptInstructions.pdf and ASP's manual2010.pdf 3.1.4 for more details
-\author{Sample~Author1,$^1$ Sample~Author2,$^2$ and Sample~Author3$^2$}
-\affil{$^1$Institution Name, Institution City, State/Province, Country; \email{AuthorEmail@email.edu}}
-\affil{$^2$Institution Name, Institution City, State/Province, Country}
+\author{Emmanuel~Joliet}
+\affil{$^1$IPAC/Caltech, Pasadena, CA, USA; \email{ejoliet@caltech.edu}}
 
 % This section is for ADS Processing.  There must be one line per author. paperauthor has 9 arguments.
-\paperauthor{Sample~Author1}{Author1Email@email.edu}{ORCID_Or_Blank}{Author1 Institution}{Author1 Department}{City}{State/Province}{Postal Code}{Country}
-\paperauthor{Sample~Author2}{Author2Email@email.edu}{ORCID_Or_Blank}{Author2 Institution}{Author2 Department}{City}{State/Province}{Postal Code}{Country}
-\paperauthor{Sample~Author3}{Author3Email@email.edu}{ORCID_Or_Blank}{Author3 Institution}{Author3 Department}{City}{State/Province}{Postal Code}{Country}
+\paperauthor{Emmanuel~Joliet}{ejoliet@ipac.caltech.edu}{}{California Institute of Technology}{IPAC}{Pasadena}{California}{91125}{USA}
 
 % There should be one \aindex line (commented out) for each author. These are used to
 % build up the author index for the Proceedings. The surname must come first, followed by
@@ -65,10 +50,7 @@
 % The Aindex.py command willl create them for you after you have constructed the \author
 % The first entry should be the first author, for bold-facing the author index page-reference
 
-%\aindex{FistAuthor1,~S.~A.}
-%\aindex{Author2,~S.~B.}
-%\aindex{Author3,~S.}
-
+%\aindex{Joliet,~E.}
 
 \begin{abstract}
 This is the ADASS 2019 author template file.  This is based on the Astronomical Society of the Pacific (ASP) 2014 template,
