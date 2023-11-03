@@ -1,4 +1,8 @@
-The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the Roman Science Support Center (SSC) at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
+The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. 
+It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. 
+As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. 
+The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets. 
+IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the Roman Science Support Center (SSC) at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
 
 
 Roman SSC
