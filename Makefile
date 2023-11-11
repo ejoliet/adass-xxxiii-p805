@@ -37,7 +37,7 @@ YEAR   = 2023
 ATDIR  = ADASS$(YEAR)_author_template
 FILES  = AdassChecks.py AdassConfig.py AdassIndex.py ADASS_template.tex ADASS_template.pdf \
 	 Aindex.py FixUnprintable.py \
-	 copyrightform.pdf example.bib example.eps \
+	 copyrightform.pdf P805.bib example.bib example.eps \
 	 Index.py manual2010.pdf ManuscriptInstructions.pdf PaperCheck.py \
 	 README subjectKeywords.txt TexScanner.py \
 	 ascl.py asclKeywords.txt detect_tex.py \
@@ -68,7 +68,7 @@ help:
 	@echo overleaf:
 	@echo tar:
 	@echo zip:
-	@echo 
+	@echo
 	@echo EDITOR targets:
 	@echo ---------------
 	@echo fix:
@@ -117,7 +117,7 @@ copyrightForm_$(P)_$(A).pdf: copyrightform.pdf
 DVIPDF = dvipdf
 
 pdf:	$(P).pdf
-	@echo $(PDFOPEN) $(P).pdf 
+	@echo $(PDFOPEN) $(P).pdf
 
 $(P).pdf:  $(P).dvi $(FIGS)
 	$(DVIPDF) $(P)
@@ -210,7 +210,7 @@ ssindex:
 	(cd ../Author_Template; ssindex-org.py ../../ADASSProceedings2020/papers/$(P)/$(P).tex)
 
 ssindex2:
-	@echo Generating scored ssindex list 
+	@echo Generating scored ssindex list
 	(cd ../Author_Template; ssindex-scored.py ../../ADASSProceedings2020/papers/$(P)/$(P).tex)
 
 index2:
@@ -238,4 +238,3 @@ pdf2:   pdf asp1
 rsync: $(P).bib
 	rsync -av $(P)_inc.tex $(P).bib $(FIGS) ../../authors
 	rm -f ../../authors/$(P)_inc.{bbl,blg}
-
