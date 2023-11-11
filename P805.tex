@@ -2,6 +2,8 @@
 
 % Do NOT use ANY packages other than asp2014.
 \usepackage{asp2014}
+% \usepackage{listings}
+% \usepackage{hyperref}
 
 \aspSuppressVolSlug
 \resetcounters
@@ -25,7 +27,7 @@
 
 \begin{document}
 
-\title{Running Roman pipelines in NASA cloud with Airflow and Kubernetes}
+\title{Running Roman pipelines in NASA cloud with Apache Airflow and Kubernetes}
 
 % Note the position of the comma between the author name and the
 % affiliation number.
@@ -72,7 +74,8 @@ The Nancy Grace Roman Space Telescope is a NASA observatory to unravel dark ener
 
 
 \section{The Roman mission}
-The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the Roman Science Support Center (SSC) at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
+
+The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the \href{https://roman.ipac.caltech.edu}{Roman Science Support Center (SSC)\footnote{https://roman.ipac.caltech.edu}} at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
 
 
 \subsection{Key facts}
@@ -127,20 +130,11 @@ Below are examples of simulated spectra and microlensing event that would be the
 
 \section{NASA Cloud platform}
 
-The NASA Mission Cloud Platform (NMCP) uses AWS services to run mission work including running the science pipelines
-AMIs, VPCs, ACL and few other cloud related environment is managed by NMCP. Roman SSC sets the roles, services and manages deployments.
-The image containers are stored and managed from AWS ECR service.
-The tasks resources are provisioned and orchestrated by Kubernetes cluster using the Elastic Kubernetes Service (AWS EKS).
-The Roman science products are stored and indexed in S3 buckets.
-Databases AWS Aurora RDS PostgreSQL are used for Airflow metadata and pipeline processing.
-
-\section{Apache Airflow in the cloud}
-
-The Roman SSC science data processing pipeline tasks are scheduled and run in a Kubernetes cluster (AWS EKS) using the Apache Airflow scheduler and UI dashboard. The task workflows are defined as Direct Acyclic Graphs (DAGs) using the Airflow task API.
-The CloudFormation stacks and Helm tools are used to deploy/managed software and services such as containers, Airflow, Grafana and Prometheus.
-Docker images registry (AWS ECR) helps storing, distributing and versioned the science software under GitHub.
-Airflow KubernetesPodOperator operator is used to define the task and its resources
-Node group consists of EC2s ‘aml2’, with ability to scale vertically and horizontally
+The NASA Mission Cloud Platform (NMCP) uses AWS\footnote{https://aws.amazon.com} services to run mission work including running the science pipelines. AMIs, VPCs, ACL and few other cloud related environment is managed by NMCP. Roman SSC sets the roles, services and manages deployments.
+The Docker images are stored and managed from AWS ECR service.
+The containers are provisioned and orchestrated by Kubernetes cluster using the Elastic Kubernetes Service (AWS EKS).
+The Roman science products files are stored and indexed in S3 buckets.
+Databases Aurora RDS PostgreSQL are used to host the Airflow metadata\footnote{https://docs.astronomer.io/learn/airflow-components\#core-components} and pipeline processing needs.
 
 \section{Software engineering}
 
@@ -151,10 +145,22 @@ Security issues and common vulnerabilties exposure (CVEs) are scanned on GitHub 
 A Jenkins server on an EC2 instance is running builds, tests on code changes and releases.
 The Apache Airflow frontend UI allows operators to monitor and troubleshoot the data pipelines, providing insights into Directed Acyclic Graphs (DAGs) and DAG runs.
 
+\section{Apache Airflow in the cloud}
+
+The Roman SSC science data processing pipeline tasks are scheduled and run in a Kubernetes cluster (AWS EKS) using the Apache Airflow\footnote{https://airflow.apache.org} scheduler and UI dashboard. The task workflows are defined as Direct Acyclic Graphs (DAGs) using the Airflow task API. The infrastructure-as-code scripts (CloudFormation stacks\footnote{https://aws.amazon.com/cloudformation/} and Helm charts are used to manage software and services deployments into Kubernetes such as Roman software containers, Apache Airflow, Grafana and Prometheus.
+Docker images registry (AWS ECR) helps storing, distributing and versioned the science software under GitHub.
+The Airflow \emph{KubernetesPodOperator}\footnote{https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/operators.html} operator is used to define the task and its resources.
+Node group consists of EC2s ‘aml2’, with ability to scale vertically and horizontally
+
+
+\section{Conclusion}
+
+Roman SSC at IPAC/Caltech uses Apache Airflow scheduler and frontend UI to define, deploy, run and monitor pipeline tasks on a Kubernetes cluster in the NASA cloud, making use of several other AWS services for storage, data transfer and scalability purposes.
+
 
 \acknowledgements I would like to thank Patrick Lowrance and Keto Zhang from Roman SSC at IPAC/Caltech who reviewed the poster/paper.
 
-\bibliography{example}  % For BibTex
+\bibliography{P805}  % For BibTex
 
 % if we have space left, we might add a conference photograph here. Leave commented for now.
 % \bookpartphoto[width=1.0\textwidth]{foobar.eps}{FooBar Photo (Photo: Any Photographer)}
