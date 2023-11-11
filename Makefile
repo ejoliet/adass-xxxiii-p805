@@ -37,7 +37,7 @@ YEAR   = 2023
 ATDIR  = ADASS$(YEAR)_author_template
 FILES  = AdassChecks.py AdassConfig.py AdassIndex.py ADASS_template.tex ADASS_template.pdf \
 	 Aindex.py FixUnprintable.py \
-	 copyrightform.pdf P805.bib example.bib example.eps \
+	 copyrightform.pdf example.bib example.eps \
 	 Index.py manual2010.pdf ManuscriptInstructions.pdf PaperCheck.py \
 	 README subjectKeywords.txt TexScanner.py \
 	 ascl.py asclKeywords.txt detect_tex.py \
