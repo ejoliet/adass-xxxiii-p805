@@ -53,7 +53,7 @@
 %\aindex{Joliet,~E.}
 
 \begin{abstract}
-The Nancy Grace Roman Space Telescope is a NASA observatory to unravel dark energy and dark matter, search for and image exoplanets, and explore infrared astrophysics. This talk highlights the solution adopted by the Roman SSC team at Caltech/IPAC to run data pipelines using Airflow and Kubernetes in the NASA cloud.
+The Nancy Grace Roman Space Telescope is a NASA observatory to unravel dark energy and dark matter, search for and image exoplanets, and explore infrared astrophysics. This talk highlights the solution adopted by the Roman Science Support Center (SSC) team at Caltech/IPAC to run data pipelines using Airflow and Kubernetes in the NASA cloud.
 \end{abstract}
 
 % These lines show examples of subject index entries. At this stage these have to commented
@@ -73,13 +73,12 @@ The Nancy Grace Roman Space Telescope is a NASA observatory to unravel dark ener
 
 \section{The Roman mission}
 
-The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with JPL, STScI and GSFC. Among several other items, the primary responsibilities for the \href{https://roman.ipac.caltech.edu}{Roman Science Support Center (SSC)\footnote{https://roman.ipac.caltech.edu}} at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
+The Nancy Grace Roman Space Telescope is a NASA observatory currently in development. It is designed to answer fundamental questions in the areas of dark energy, exoplanets, and astrophysics.  Roman will have two instruments, the Wide Field Instrument (WFI) and the Coronagraph Instrument. As the primary instrument, the WFI will observe the light from a billion galaxies over the mission and perform a microlensing survey of the inner Milky Way to find ~2,600 exoplanets. The Coronagraph Instrument will perform a technological demonstration preforming high contrast imaging of individual nearby exoplanets.  IPAC is supporting the science operations together with the Jet Propulsion Laboratory (JPL), The Space Telescope Science Institute (STScI) and the Goddard Space Flight Center (GSFC). Among several other items, the primary responsibilities for the \href{https://roman.ipac.caltech.edu}{Roman SSC\footnote{https://roman.ipac.caltech.edu}} at IPAC includes science data processing for the WFI microlensing survey and all spectroscopic observations in the NASA cloud.
 
 
 \subsection{Key facts}
 
 Key facts of the mission are:
-
 \begin{itemize}
   \item Launch to L2 no later than May 2027
   \item Lifetime: 5 years
@@ -92,56 +91,38 @@ Key facts of the mission are:
   \item Roman SSC at IPAC to produce high level sci data products
 \end{itemize}
 
-
-
-
 \subsection{Roman SSC responsibilities}
 
-Roman SSC science data processing pipelines in the cloud are:
-\begin{itemize}
-\item WFI Microlensing Science Operations System (MSOS)
-\item WFI Grism and Prism Data Processing System (GDPS)
-\end{itemize}
+The SSC is responsible for running two higher level science data processing pipelines
+in the NASA Mission Cloud Platform. These include the Microlensing pipeline and the
+Spectroscopy pipeline for data taken with the grism or prism filers (GDPS).
 
-Roman SSC will produce high level science data products and support Galactic Bulge Time Domain Survey and High Latitude Wide Area, High Latitude Time Domain and Guest Observer surveys.
+The WFI Microlensing Science Operations System (MSOS) processing pipeline will produce daily light curves, seasonal objects and events catalogs among other products (\~200 million objects), Microlensing events (see simulated event in figure \ref{ex_fig1}) catalog, Light Curves.
 
-\begin{itemize}
-\item MSOS: Microlensing survey processing pipeline producing daily light curves, seasonal objects and events catalogs among other products.~200 millions object catalogs, Microlensing events catalog, Light Curves
-\item GDPS: Produces decontaminated 2D and 1D extracted spectra and spectral redshifts among other products. 
-\end{itemize}
+The WFI Grism and Prism Data Processing System (GDPS) pipeline will produce decontaminated 2D and 1D extracted spectra and spectral redshifts among other products (see example of spectral fitting in figure \ref{ex_fig2}). 
 
+These higher level products will support the Galactic Bulge Time Domain Survey and High Latitude Wide Area, High Latitude Time Domain and Guest Observer surveys.
 
-Other SSC main systems: Coronagraph Instrument Operations and Data Management System, Roman Telescope Proposal System, and Community Engagement.
-Data volumes:
+Other SSC main systems are the Coronagraph Instrument Operations and Data Management System, Roman Telescope Proposal System, and Community Engagement.
+
+Data volumes estimates are:
 
 \begin{itemize}
-  \item MSOS: 5 TB/daily  ~ 2PB over mission lifetime (6 seasons of ~62 days each) 
-  \item GDPS: 1.5TB/daily during survey (unsure since TBD observations)
-  \item CGI - 1TB over tech demo
+\item MSOS - 5 TB/daily  ~ 2PB over mission lifetime (6 seasons of ~62 days each) 
+\item GDPS - 1.5TB/daily during survey (unsure since TBD observations)
+\item CGI - 1TB over tech demo
 \end{itemize}
 
-Below are examples of simulated spectra and microlensing event that would be the science products coming out of the pipelines from MSOS (see figure \ref{ex_fig1}) and from GDPS (see figure \ref{ex_fig2}).
+\articlefigure[width=.5\textwidth]{P805_f1.eps}{ex_fig1}{Simulated Roman microlensing event (2 seasons) with a planetary anomaly (\citet{2019ApJS..241....3P})}
 
-\articlefigure[width=.5\textwidth]{images/event.eps}{ex_fig1}{Simulated Roman microlensing event (2 seasons) with a planetary anomaly (\citet{2019ApJS..241....3P})}
-
-\articlefigure{images/spectra.eps}{ex_fig2}{Example of redshift PDF visualization (top) and spectral fitting (bottom) in the 1D pipeline. In the bottom panel, the data are shown in blue and fit to the continuum and the spectral features (along with the uncertainty) are shown in red.  The fit to the emission lines are used to generate the zPDF shown in the top plot, here with a strong peak in the solution at a redshift z~1.55.  A weaker, secondary maximum is also seen at z~1.48.}
+\articlefigure{P805_f2.eps}{ex_fig2}{Example of redshift PDF visualization (top) and spectral fitting (bottom) in the 1D pipeline. In the bottom panel, the data are shown in blue and fit to the continuum and the spectral features (along with the uncertainty) are shown in red.  The fit to the emission lines are used to generate the zPDF shown in the top plot, here with a strong peak in the solution at a redshift z~1.55.  A weaker, secondary maximum is also seen at z~1.48.}
 
 \section{NASA Cloud platform}
 
-The NASA Mission Cloud Platform (NMCP) uses AWS\footnote{https://aws.amazon.com} services to run mission work including running the science pipelines. AMIs, VPCs, ACL and few other cloud related environment is managed by NMCP. Roman SSC sets the roles, services and manages deployments.
-The Docker images are stored and managed from AWS ECR service.
-The containers are provisioned and orchestrated by Kubernetes cluster using the Elastic Kubernetes Service (AWS EKS).
-The Roman science products files are stored and indexed in S3 buckets.
+The NASA Mission Cloud Platform (NMCP) uses AWS\footnote{https://aws.amazon.com} services to run mission work including running the science pipelines. AMIs, VPCs, ACL and few other cloud related environment and services are managed by NMCP. Roman SSC sets the roles, compute services and manages deployments and data. The Docker images are stored and managed from AWS Elastic Container Registry (ECR) service.
+The containers are provisioned and orchestrated by Kubernetes cluster using the AWS Elastic Kubernetes Service (EKS).
+The Roman science products files are stored and indexed in AWS Simple Storage Service (S3) buckets.
 Databases Aurora RDS PostgreSQL are used to host the Airflow metadata\footnote{https://docs.astronomer.io/learn/airflow-components\#core-components} and pipeline processing needs.
-
-\section{Software engineering}
-
-Roman SSC uses a GitOps approach for defining and deploying the infrastructure and resources. We apply DevOps best practices to a CI/CD chain, with version control and infrastructure-as-code automation. Our Python ecosystem includes asdf, astropy, scipy, pydantic, dask, boto3, matplotlib, pytest/tox, and Airflow API, among others. The C/C++ codebase makes use of numerical and test unit libraries.
-The Code, DAGs and AWS scripts to support running the pipelines are under Configuration Management in IPAC private GitHub repositories.
-Docker images are used as a release artifacts to be distributed in EKS cluster and run as PODs.
-Security issues and common vulnerabilties exposure (CVEs) are scanned on GitHub code and on containers hosted in AWS ECR with Snyk tool.
-A Jenkins server on an EC2 instance is running builds, tests on code changes and releases.
-The Apache Airflow frontend UI allows operators to monitor and troubleshoot the data pipelines, providing insights into Directed Acyclic Graphs (DAGs) and DAG runs.
 
 \section{Apache Airflow in the cloud}
 
@@ -149,6 +130,15 @@ The Roman SSC science data processing pipeline tasks are scheduled and run in a 
 Docker images registry (AWS ECR) helps storing, distributing and versioned the science software under GitHub.
 The Airflow \emph{KubernetesPodOperator}\footnote{https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/operators.html} operator is used to define the task and its resources.
 Node group consists of EC2s ‘aml2’, with ability to scale vertically and horizontally
+
+\subsection{Software engineering}
+
+Roman SSC uses a GitOps approach for defining and deploying the infrastructure and resources. We apply DevOps best practices to a CI/CD chain, with version control and infrastructure-as-code automation. Our Python ecosystem includes asdf, astropy, scipy, pydantic, dask, boto3, matplotlib, pytest/tox, and Airflow API, among others. The C/C++ codebase makes use of numerical and test unit libraries.
+The Code, DAGs and AWS scripts to support running the pipelines are under Configuration Management in IPAC private GitHub repositories.
+Docker images are used as a release artifacts to be distributed in EKS cluster and run as PODs.
+Security issues and Common Vulnerabilties and Exposures (CVEs) are scanned on GitHub code and on containers hosted in AWS ECR with Snyk tool.
+A Jenkins server on an EC2 instance is running builds, tests on code changes and releases.
+The Apache Airflow frontend UI allows operators to monitor and troubleshoot the data pipelines, providing insights into DAGs and DAG runs.
 
 
 \section{Conclusion}
